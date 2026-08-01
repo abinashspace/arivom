@@ -10,33 +10,115 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as ApplicationsRouteImport } from './routes/applications'
+import { Route as FindRouteImport } from './routes/find'
+import { Route as ResultsRouteImport } from './routes/results'
+import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as SchemeSchemeIdRouteImport } from './routes/scheme.$schemeId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApplicationsRoute = ApplicationsRouteImport.update({
+  id: '/applications',
+  path: '/applications',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FindRoute = FindRouteImport.update({
+  id: '/find',
+  path: '/find',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResultsRoute = ResultsRouteImport.update({
+  id: '/results',
+  path: '/results',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SchemeSchemeIdRoute = SchemeSchemeIdRouteImport.update({
+  id: '/scheme/$schemeId',
+  path: '/scheme/$schemeId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/applications': typeof ApplicationsRoute
+  '/find': typeof FindRoute
+  '/results': typeof ResultsRoute
+  '/settings': typeof SettingsRoute
+  '/scheme/$schemeId': typeof SchemeSchemeIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/applications': typeof ApplicationsRoute
+  '/find': typeof FindRoute
+  '/results': typeof ResultsRoute
+  '/settings': typeof SettingsRoute
+  '/scheme/$schemeId': typeof SchemeSchemeIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/applications': typeof ApplicationsRoute
+  '/find': typeof FindRoute
+  '/results': typeof ResultsRoute
+  '/settings': typeof SettingsRoute
+  '/scheme/$schemeId': typeof SchemeSchemeIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/applications'
+    | '/find'
+    | '/results'
+    | '/settings'
+    | '/scheme/$schemeId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/applications'
+    | '/find'
+    | '/results'
+    | '/settings'
+    | '/scheme/$schemeId'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/applications'
+    | '/find'
+    | '/results'
+    | '/settings'
+    | '/scheme/$schemeId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  ApplicationsRoute: typeof ApplicationsRoute
+  FindRoute: typeof FindRoute
+  ResultsRoute: typeof ResultsRoute
+  SettingsRoute: typeof SettingsRoute
+  SchemeSchemeIdRoute: typeof SchemeSchemeIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +130,59 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/applications': {
+      id: '/applications'
+      path: '/applications'
+      fullPath: '/applications'
+      preLoaderRoute: typeof ApplicationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/find': {
+      id: '/find'
+      path: '/find'
+      fullPath: '/find'
+      preLoaderRoute: typeof FindRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/results': {
+      id: '/results'
+      path: '/results'
+      fullPath: '/results'
+      preLoaderRoute: typeof ResultsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/scheme/$schemeId': {
+      id: '/scheme/$schemeId'
+      path: '/scheme/$schemeId'
+      fullPath: '/scheme/$schemeId'
+      preLoaderRoute: typeof SchemeSchemeIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  ApplicationsRoute: ApplicationsRoute,
+  FindRoute: FindRoute,
+  ResultsRoute: ResultsRoute,
+  SettingsRoute: SettingsRoute,
+  SchemeSchemeIdRoute: SchemeSchemeIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
