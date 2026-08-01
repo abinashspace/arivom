@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Menu, Settings, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useState } from "react";
 
 const nav = [
@@ -14,7 +14,7 @@ export function AppHeader() {
 
   return (
     <>
-      <header className="sticky top-0 z-40 flex h-32 items-center justify-center bg-background px-4">
+      <header className="sticky top-0 z-40 flex h-32 items-center justify-center bg-primary px-4">
         <div className="flex w-full max-w-3xl items-center justify-between rounded-full bg-card px-4 py-3">
           <button
             aria-label="Open menu"
@@ -28,13 +28,8 @@ export function AppHeader() {
             Arivom
           </Link>
 
-          <Link
-            to="/settings"
-            aria-label="Settings"
-            className="rounded-full p-2 text-foreground transition-colors hover:bg-accent"
-          >
-            <Settings className="h-6 w-6" />
-          </Link>
+          {/* Spacer to keep the wordmark visually centered now that there's no right-side icon */}
+          <div className="h-10 w-10" aria-hidden="true" />
         </div>
       </header>
 
@@ -70,16 +65,6 @@ export function AppHeader() {
                   </Link>
                 </li>
               ))}
-              <li>
-                <Link
-                  to="/settings"
-                  onClick={() => setOpen(false)}
-                  activeProps={{ className: "bg-accent" }}
-                  className="block rounded-xl px-4 py-3 text-base font-medium text-foreground transition-colors hover:bg-accent"
-                >
-                  Settings
-                </Link>
-              </li>
             </ul>
             <p className="mt-8 px-4 font-mono text-xs text-muted-foreground">
               No login. Your answers stay on this device.

@@ -14,7 +14,6 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as ApplicationsRouteImport } from './routes/applications'
 import { Route as FindRouteImport } from './routes/find'
 import { Route as ResultsRouteImport } from './routes/results'
-import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as SchemeSchemeIdRouteImport } from './routes/scheme.$schemeId'
 
 const IndexRoute = IndexRouteImport.update({
@@ -42,11 +41,6 @@ const ResultsRoute = ResultsRouteImport.update({
   path: '/results',
   getParentRoute: () => rootRouteImport,
 } as any)
-const SettingsRoute = SettingsRouteImport.update({
-  id: '/settings',
-  path: '/settings',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const SchemeSchemeIdRoute = SchemeSchemeIdRouteImport.update({
   id: '/scheme/$schemeId',
   path: '/scheme/$schemeId',
@@ -59,7 +53,6 @@ export interface FileRoutesByFullPath {
   '/applications': typeof ApplicationsRoute
   '/find': typeof FindRoute
   '/results': typeof ResultsRoute
-  '/settings': typeof SettingsRoute
   '/scheme/$schemeId': typeof SchemeSchemeIdRoute
 }
 export interface FileRoutesByTo {
@@ -68,7 +61,6 @@ export interface FileRoutesByTo {
   '/applications': typeof ApplicationsRoute
   '/find': typeof FindRoute
   '/results': typeof ResultsRoute
-  '/settings': typeof SettingsRoute
   '/scheme/$schemeId': typeof SchemeSchemeIdRoute
 }
 export interface FileRoutesById {
@@ -78,7 +70,6 @@ export interface FileRoutesById {
   '/applications': typeof ApplicationsRoute
   '/find': typeof FindRoute
   '/results': typeof ResultsRoute
-  '/settings': typeof SettingsRoute
   '/scheme/$schemeId': typeof SchemeSchemeIdRoute
 }
 export interface FileRouteTypes {
@@ -89,7 +80,6 @@ export interface FileRouteTypes {
     | '/applications'
     | '/find'
     | '/results'
-    | '/settings'
     | '/scheme/$schemeId'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -98,7 +88,6 @@ export interface FileRouteTypes {
     | '/applications'
     | '/find'
     | '/results'
-    | '/settings'
     | '/scheme/$schemeId'
   id:
     | '__root__'
@@ -107,7 +96,6 @@ export interface FileRouteTypes {
     | '/applications'
     | '/find'
     | '/results'
-    | '/settings'
     | '/scheme/$schemeId'
   fileRoutesById: FileRoutesById
 }
@@ -117,7 +105,6 @@ export interface RootRouteChildren {
   ApplicationsRoute: typeof ApplicationsRoute
   FindRoute: typeof FindRoute
   ResultsRoute: typeof ResultsRoute
-  SettingsRoute: typeof SettingsRoute
   SchemeSchemeIdRoute: typeof SchemeSchemeIdRoute
 }
 
@@ -158,13 +145,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResultsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/settings': {
-      id: '/settings'
-      path: '/settings'
-      fullPath: '/settings'
-      preLoaderRoute: typeof SettingsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/scheme/$schemeId': {
       id: '/scheme/$schemeId'
       path: '/scheme/$schemeId'
@@ -181,7 +161,6 @@ const rootRouteChildren: RootRouteChildren = {
   ApplicationsRoute: ApplicationsRoute,
   FindRoute: FindRoute,
   ResultsRoute: ResultsRoute,
-  SettingsRoute: SettingsRoute,
   SchemeSchemeIdRoute: SchemeSchemeIdRoute,
 }
 export const routeTree = rootRouteImport

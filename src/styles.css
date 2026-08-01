@@ -59,45 +59,42 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
-  --font-display: "Bebas Neue", "Anton", "Barlow Condensed", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
-  --color-mint-chip: var(--mint-chip);
-  --color-voltage-yellow: var(--voltage-yellow);
-  --color-ash: var(--ash);
-  --color-smoke: var(--smoke);
-  --color-slate: var(--slate);
-  --color-graphite: var(--graphite);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
 }
 
 :root {
-  /* Brutalist editorial palette — see DESIGN.md */
+  /* Site color schema: Primary #003366, Accent #FF9800, Success #2E7D32,
+     Error #D32F2F, Warning #FBC02D, Background #FAFAFA, Text #212121 */
   --radius: 0.5rem;
-  --background: oklch(0.922 0 0); /* warm canvas #e5e5e5 */
-  --foreground: oklch(0 0 0); /* carbon black */
-  --card: oklch(1 0 0); /* paper white */
-  --card-foreground: oklch(0 0 0);
+  --background: oklch(0.985 0 0); /* #FAFAFA */
+  --foreground: oklch(0.248 0 0); /* #212121 text */
+  --card: oklch(1 0 0); /* white surface, one step above background */
+  --card-foreground: oklch(0.248 0 0);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0 0 0);
-  --primary: oklch(0 0 0); /* carbon black — filled dark button */
+  --popover-foreground: oklch(0.248 0 0);
+  --primary: oklch(0.323 0.103 253.9); /* #003366 */
   --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.964 0 0); /* mist gray */
-  --secondary-foreground: oklch(0 0 0);
-  --muted: oklch(0.964 0 0); /* mist gray */
-  --muted-foreground: oklch(0.387 0 0); /* slate */
-  --accent: oklch(0.954 0.085 141.4); /* mint chip */
-  --accent-foreground: oklch(0 0 0);
-  --destructive: oklch(0.55 0.2 27);
+  --secondary: oklch(0.955 0 0); /* light neutral surface */
+  --secondary-foreground: oklch(0.248 0 0);
+  --muted: oklch(0.955 0 0);
+  --muted-foreground: oklch(0.45 0 0); /* mid gray secondary text */
+  --accent: oklch(0.77 0.174 64.1); /* #FF9800 */
+  --accent-foreground: oklch(0.248 0 0); /* dark text for contrast on orange */
+  --success: oklch(0.523 0.135 144.2); /* #2E7D32 */
+  --success-foreground: oklch(1 0 0);
+  --warning: oklch(0.839 0.162 84.4); /* #FBC02D */
+  --warning-foreground: oklch(0.248 0 0); /* dark text for contrast on yellow */
+  --destructive: oklch(0.568 0.2 26.4); /* #D32F2F */
   --destructive-foreground: oklch(1 0 0);
-  --border: oklch(0.827 0 0); /* ash */
-  --input: oklch(0.827 0 0);
-  --ring: oklch(0 0 0);
-  --mint-chip: oklch(0.954 0.085 141.4);
-  --voltage-yellow: oklch(0.939 0.2 105.4);
-  --ash: oklch(0.827 0 0);
-  --smoke: oklch(0.676 0 0);
-  --slate: oklch(0.387 0 0);
-  --graphite: oklch(0.305 0 0);
+  --border: oklch(0.878 0 0);
+  --input: oklch(0.878 0 0);
+  --ring: oklch(0.323 0.103 253.9);
   --shadow-soft: none;
   --shadow-lift: none;
 
@@ -174,12 +171,12 @@
   }
 }
 
-/* Display headline — the massive condensed uppercase treatment, opt-in via className="display-heading" */
+/* Display headline — massive serif treatment, opt-in via className="display-heading" */
 .display-heading {
   font-family: var(--font-display);
-  font-weight: 700;
-  line-height: 0.9;
-  letter-spacing: -0.03em;
-  text-transform: uppercase;
+  font-weight: 600;
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+  text-transform: none;
 }
 
