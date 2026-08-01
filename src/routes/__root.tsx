@@ -11,6 +11,8 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { AppHeader } from "../components/AppHeader";
+
 
 function NotFoundComponent() {
   return (
@@ -131,8 +133,16 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <AppHeader />
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
+      <footer className="mt-16 border-t border-border py-8">
+        <div className="mx-auto flex max-w-5xl flex-col gap-1 px-5 text-sm text-muted-foreground">
+          <span className="font-display font-bold text-primary">Arivom</span>
+          <span>Connecting People with Their Rights · Not an official government website.</span>
+        </div>
+      </footer>
     </QueryClientProvider>
   );
 }
+
