@@ -14,24 +14,24 @@ export function AppHeader() {
 
   return (
     <>
-      <header className="sticky top-0 z-40 border-b border-border bg-card/95 backdrop-blur">
-        <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-4">
+      <header className="sticky top-0 z-40 flex h-32 items-center justify-center bg-background px-4">
+        <div className="flex w-full max-w-3xl items-center justify-between rounded-full bg-card px-4 py-3">
           <button
             aria-label="Open menu"
             onClick={() => setOpen(true)}
-            className="rounded-xl p-2 text-foreground transition-colors hover:bg-secondary"
+            className="rounded-full p-2 text-foreground transition-colors hover:bg-accent"
           >
             <Menu className="h-6 w-6" />
           </button>
 
-          <Link to="/" className="font-display text-2xl font-extrabold tracking-tight text-primary">
+          <Link to="/" className="font-display text-2xl text-foreground">
             Arivom
           </Link>
 
           <Link
             to="/settings"
             aria-label="Settings"
-            className="rounded-xl p-2 text-foreground transition-colors hover:bg-secondary"
+            className="rounded-full p-2 text-foreground transition-colors hover:bg-accent"
           >
             <Settings className="h-6 w-6" />
           </Link>
@@ -45,13 +45,13 @@ export function AppHeader() {
             onClick={() => setOpen(false)}
             className="absolute inset-0 bg-foreground/40"
           />
-          <nav className="absolute inset-y-0 left-0 w-72 max-w-[85%] bg-card p-5 shadow-lift">
+          <nav className="absolute inset-y-0 left-0 w-72 max-w-[85%] bg-card p-5">
             <div className="flex items-center justify-between">
-              <span className="font-display text-xl font-extrabold text-primary">Arivom</span>
+              <span className="font-display text-xl text-foreground">Arivom</span>
               <button
                 aria-label="Close menu"
                 onClick={() => setOpen(false)}
-                className="rounded-xl p-2 hover:bg-secondary"
+                className="rounded-full p-2 hover:bg-accent"
               >
                 <X className="h-5 w-5" />
               </button>
@@ -62,9 +62,9 @@ export function AppHeader() {
                   <Link
                     to={item.to}
                     onClick={() => setOpen(false)}
-                    activeProps={{ className: "bg-secondary text-primary" }}
+                    activeProps={{ className: "bg-accent" }}
                     activeOptions={{ exact: item.to === "/" }}
-                    className="block rounded-xl px-4 py-3 text-base font-semibold text-foreground transition-colors hover:bg-secondary"
+                    className="block rounded-xl px-4 py-3 text-base font-medium text-foreground transition-colors hover:bg-accent"
                   >
                     {item.label}
                   </Link>
@@ -74,14 +74,14 @@ export function AppHeader() {
                 <Link
                   to="/settings"
                   onClick={() => setOpen(false)}
-                  activeProps={{ className: "bg-secondary text-primary" }}
-                  className="block rounded-xl px-4 py-3 text-base font-semibold text-foreground transition-colors hover:bg-secondary"
+                  activeProps={{ className: "bg-accent" }}
+                  className="block rounded-xl px-4 py-3 text-base font-medium text-foreground transition-colors hover:bg-accent"
                 >
                   Settings
                 </Link>
               </li>
             </ul>
-            <p className="mt-8 px-4 text-xs text-muted-foreground">
+            <p className="mt-8 px-4 font-mono text-xs text-muted-foreground">
               No login. Your answers stay on this device.
             </p>
           </nav>

@@ -36,7 +36,7 @@ function ApplicationsPage() {
           <p className="text-muted-foreground">You haven't marked any scheme as applied yet.</p>
           <Link
             to="/find"
-            className="mt-6 inline-block rounded-xl bg-primary px-6 py-3 font-semibold text-primary-foreground"
+            className="mt-6 inline-block rounded-lg bg-primary px-6 py-3 font-medium text-primary-foreground"
           >
             Find my schemes
           </Link>

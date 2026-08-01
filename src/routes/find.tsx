@@ -191,7 +191,7 @@ function FindPage() {
 
         <button
           type="submit"
-          className="w-full rounded-xl bg-primary px-6 py-4 font-display text-lg font-bold text-primary-foreground transition-colors hover:bg-primary/90"
+          className="w-full rounded-lg bg-primary px-6 py-4 font-sans text-base font-medium text-primary-foreground transition-colors hover:bg-primary/90"
         >
           See my schemes
         </button>

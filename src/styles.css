@@ -59,57 +59,61 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
-  --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
-  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
-  --color-saffron: var(--saffron);
-  --color-saffron-foreground: var(--saffron-foreground);
-  --color-ink: var(--ink);
-  --color-surface: var(--surface);
+  --font-display: "Bebas Neue", "Anton", "Barlow Condensed", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --color-mint-chip: var(--mint-chip);
+  --color-voltage-yellow: var(--voltage-yellow);
+  --color-ash: var(--ash);
+  --color-smoke: var(--smoke);
+  --color-slate: var(--slate);
+  --color-graphite: var(--graphite);
 }
 
 :root {
-  --radius: 0.75rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.24 0.04 250);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.24 0.04 250);
+  /* Brutalist editorial palette — see DESIGN.md */
+  --radius: 0.5rem;
+  --background: oklch(0.922 0 0); /* warm canvas #e5e5e5 */
+  --foreground: oklch(0 0 0); /* carbon black */
+  --card: oklch(1 0 0); /* paper white */
+  --card-foreground: oklch(0 0 0);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.24 0.04 250);
-  --primary: oklch(0.365 0.093 249);
+  --popover-foreground: oklch(0 0 0);
+  --primary: oklch(0 0 0); /* carbon black — filled dark button */
   --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.962 0.012 249);
-  --secondary-foreground: oklch(0.365 0.093 249);
-  --muted: oklch(0.968 0.008 249);
-  --muted-foreground: oklch(0.52 0.025 249);
-  --accent: oklch(0.94 0.02 249);
-  --accent-foreground: oklch(0.365 0.093 249);
+  --secondary: oklch(0.964 0 0); /* mist gray */
+  --secondary-foreground: oklch(0 0 0);
+  --muted: oklch(0.964 0 0); /* mist gray */
+  --muted-foreground: oklch(0.387 0 0); /* slate */
+  --accent: oklch(0.954 0.085 141.4); /* mint chip */
+  --accent-foreground: oklch(0 0 0);
   --destructive: oklch(0.55 0.2 27);
   --destructive-foreground: oklch(1 0 0);
-  --border: oklch(0.91 0.012 249);
-  --input: oklch(0.89 0.014 249);
-  --ring: oklch(0.365 0.093 249);
-  --saffron: oklch(0.72 0.18 55);
-  --saffron-foreground: oklch(0.2 0.05 258);
-  --ink: oklch(0.24 0.04 250);
-  --surface: oklch(0.975 0.008 249);
-  --gradient-hero: linear-gradient(135deg, oklch(0.3 0.08 249), oklch(0.42 0.09 249));
-  --gradient-saffron: linear-gradient(100deg, oklch(0.74 0.17 62), oklch(0.66 0.2 40));
-  --shadow-soft: 0 12px 30px -20px oklch(0.24 0.04 250 / 0.4);
-  --shadow-lift: 0 24px 60px -30px oklch(0.24 0.04 250 / 0.45);
+  --border: oklch(0.827 0 0); /* ash */
+  --input: oklch(0.827 0 0);
+  --ring: oklch(0 0 0);
+  --mint-chip: oklch(0.954 0.085 141.4);
+  --voltage-yellow: oklch(0.939 0.2 105.4);
+  --ash: oklch(0.827 0 0);
+  --smoke: oklch(0.676 0 0);
+  --slate: oklch(0.387 0 0);
+  --graphite: oklch(0.305 0 0);
+  --shadow-soft: none;
+  --shadow-lift: none;
 
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.984 0.003 247.858);
-  --sidebar-foreground: oklch(0.129 0.042 264.695);
-  --sidebar-primary: oklch(0.208 0.042 265.755);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.968 0.007 247.896);
-  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
-  --sidebar-border: oklch(0.929 0.013 255.508);
-  --sidebar-ring: oklch(0.704 0.04 256.788);
+  --sidebar: oklch(0.964 0 0);
+  --sidebar-foreground: oklch(0 0 0);
+  --sidebar-primary: oklch(0 0 0);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.954 0.085 141.4);
+  --sidebar-accent-foreground: oklch(0 0 0);
+  --sidebar-border: oklch(0.827 0 0);
+  --sidebar-ring: oklch(0 0 0);
 }
 
 
@@ -162,24 +166,20 @@
   h1,
   h2,
   h3 {
-    font-family: var(--font-display);
+    font-family: var(--font-sans);
+    font-weight: 600;
+    text-transform: uppercase;
     letter-spacing: -0.02em;
+    line-height: 1.1;
   }
 }
 
-@utility bg-hero-gradient {
-  background-image: var(--gradient-hero);
-}
-
-@utility bg-saffron-gradient {
-  background-image: var(--gradient-saffron);
-}
-
-@utility shadow-soft {
-  box-shadow: var(--shadow-soft);
-}
-
-@utility shadow-lift {
-  box-shadow: var(--shadow-lift);
+/* Display headline — the massive condensed uppercase treatment, opt-in via className="display-heading" */
+.display-heading {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
 }
 

@@ -38,7 +38,7 @@ function ResultsPage() {
         <p className="mt-2 text-muted-foreground">Fill the short questionnaire to see your matches.</p>
         <Link
           to="/find"
-          className="mt-8 inline-block rounded-xl bg-primary px-6 py-3 font-semibold text-primary-foreground"
+          className="mt-8 inline-block rounded-lg bg-primary px-6 py-3 font-medium text-primary-foreground"
         >
           Start now
         </Link>
