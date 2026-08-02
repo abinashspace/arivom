@@ -2,8 +2,6 @@
 @source "../src";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
-
 /*
  * Design system definition.
  *
@@ -70,31 +68,32 @@
 
 :root {
   /* Site color schema: Primary #003366, Accent #FF9800, Success #2E7D32,
-     Error #D32F2F, Warning #FBC02D, Background #FAFAFA, Text #212121 */
+     Background #F4F7FB, Primary #1D4ED8, Accent #0EA5E9, Cards #FFFFFF,
+     Success #22C55E, Borders #CBD5E1, Text #0F172A */
   --radius: 0.5rem;
-  --background: oklch(0.985 0 0); /* #FAFAFA */
-  --foreground: oklch(0.248 0 0); /* #212121 text */
-  --card: oklch(1 0 0); /* white surface, one step above background */
-  --card-foreground: oklch(0.248 0 0);
+  --background: oklch(0.975 0.006 255.5); /* #F4F7FB */
+  --foreground: oklch(0.208 0.04 265.8); /* #0F172A */
+  --card: oklch(1 0 0); /* #FFFFFF */
+  --card-foreground: oklch(0.208 0.04 265.8);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.248 0 0);
-  --primary: oklch(0.323 0.103 253.9); /* #003366 */
+  --popover-foreground: oklch(0.208 0.04 265.8);
+  --primary: oklch(0.259 0.09 256.5); /* #00224E — sunset-theme navy */
   --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.955 0 0); /* light neutral surface */
-  --secondary-foreground: oklch(0.248 0 0);
-  --muted: oklch(0.955 0 0);
-  --muted-foreground: oklch(0.45 0 0); /* mid gray secondary text */
-  --accent: oklch(0.77 0.174 64.1); /* #FF9800 */
-  --accent-foreground: oklch(0.248 0 0); /* dark text for contrast on orange */
-  --success: oklch(0.523 0.135 144.2); /* #2E7D32 */
-  --success-foreground: oklch(1 0 0);
-  --warning: oklch(0.839 0.162 84.4); /* #FBC02D */
-  --warning-foreground: oklch(0.248 0 0); /* dark text for contrast on yellow */
-  --destructive: oklch(0.568 0.2 26.4); /* #D32F2F */
+  --secondary: oklch(0.94 0.012 255.5); /* light blue-gray surface */
+  --secondary-foreground: oklch(0.208 0.04 265.8);
+  --muted: oklch(0.94 0.012 255.5);
+  --muted-foreground: oklch(0.48 0.025 260); /* mid blue-gray secondary text */
+  --accent: oklch(0.833 0.15 84); /* #F6BF41 — sunset-theme gold */
+  --accent-foreground: oklch(0.208 0.04 265.8); /* dark text — white fails contrast on this gold */
+  --success: oklch(0.723 0.192 149.6); /* #22C55E */
+  --success-foreground: oklch(0.208 0.04 265.8); /* dark text — white fails contrast on this green */
+  --warning: oklch(0.839 0.162 84.4); /* #FBC02D, unchanged — not part of this palette */
+  --warning-foreground: oklch(0.208 0.04 265.8);
+  --destructive: oklch(0.568 0.2 26.4); /* #D32F2F, unchanged — not part of this palette */
   --destructive-foreground: oklch(1 0 0);
-  --border: oklch(0.878 0 0);
-  --input: oklch(0.878 0 0);
-  --ring: oklch(0.323 0.103 253.9);
+  --border: oklch(0.869 0.02 252.9); /* #CBD5E1 */
+  --input: oklch(0.869 0.02 252.9);
+  --ring: oklch(0.259 0.09 256.5);
   --shadow-soft: none;
   --shadow-lift: none;
 
@@ -113,42 +112,6 @@
   --sidebar-ring: oklch(0 0 0);
 }
 
-
-.dark {
-  --background: oklch(0.129 0.042 264.695);
-  --foreground: oklch(0.984 0.003 247.858);
-  --card: oklch(0.208 0.042 265.755);
-  --card-foreground: oklch(0.984 0.003 247.858);
-  --popover: oklch(0.208 0.042 265.755);
-  --popover-foreground: oklch(0.984 0.003 247.858);
-  --primary: oklch(0.929 0.013 255.508);
-  --primary-foreground: oklch(0.208 0.042 265.755);
-  --secondary: oklch(0.279 0.041 260.031);
-  --secondary-foreground: oklch(0.984 0.003 247.858);
-  --muted: oklch(0.279 0.041 260.031);
-  --muted-foreground: oklch(0.704 0.04 256.788);
-  --accent: oklch(0.279 0.041 260.031);
-  --accent-foreground: oklch(0.984 0.003 247.858);
-  --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.551 0.027 264.364);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.208 0.042 265.755);
-  --sidebar-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.279 0.041 260.031);
-  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.551 0.027 264.364);
-}
-
 @layer base {
   * {
     border-color: var(--color-border);
@@ -156,7 +119,17 @@
 
   body {
     background-color: var(--color-background);
-    color: var(--color-foreground);
+    /* Sunset palette: #02050A near-black, #00224E navy, #4376AB steel blue, #F6BF41 gold horizon glow */
+    background-image:
+      radial-gradient(circle at 20% 90%, oklch(0.833 0.15 84 / 0.45), transparent 45%),
+      radial-gradient(circle at 85% 10%, oklch(0.554 0.1 250.9 / 0.4), transparent 50%),
+      linear-gradient(180deg, oklch(0.113 0.017 250.8) 0%, oklch(0.259 0.09 256.5) 55%, oklch(0.554 0.1 250.9) 100%);
+    background-attachment: fixed;
+    background-size: cover;
+    min-height: 100vh;
+    /* Page backdrop is always the dark gradient now, so default text is white;
+       .glass-content explicitly overrides to dark foreground for panel content. */
+    color: #fff;
     font-family: var(--font-sans);
   }
 
@@ -164,10 +137,15 @@
   h2,
   h3 {
     font-family: var(--font-sans);
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: -0.02em;
-    line-height: 1.1;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-ring);
+    outline-offset: 2px;
+    border-radius: 2px;
   }
 }
 
@@ -178,5 +156,120 @@
   line-height: 0.95;
   letter-spacing: -0.01em;
   text-transform: none;
+}
+
+/*
+ * Glassmorphism surfaces.
+ *
+ * Two tiers, both carrying the same signature (blur + thin light border +
+ * soft wide shadow) so glass reads as a skin on any surface, not a
+ * separate floating control layer:
+ *
+ * .glass-chrome  — very translucent, for large single-line brand surfaces
+ *                  (header, hero) where the backdrop's color is the point.
+ *                  White text.
+ * .glass-content — higher-opacity scrim, for anything carrying body copy
+ *                  (cards, form panels, prose). Still blurred and bordered,
+ *                  just opaque enough to guarantee contrast for dark text
+ *                  regardless of what's behind it.
+ */
+.glass-chrome {
+  background: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  color: #fff;
+}
+
+.glass-chrome :focus-visible {
+  outline-color: #fff;
+}
+
+.glass-content {
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+  color: var(--color-foreground);
+}
+
+/* Same visual outcome as .glass-content (opaque surface, border, soft shadow,
+   dark text) but no backdrop-filter — for repeated list items where many
+   concurrent blur regions would be a real GPU cost (e.g. scheme result cards). */
+.flat-card {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  color: var(--color-foreground);
+}
+
+/* Fallback: browsers/users that turn off transparency effects get solid surfaces instead. */
+@media (prefers-reduced-transparency: reduce) {
+  .glass-chrome,
+  .glass-content {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-color: var(--color-border);
+    box-shadow: none;
+  }
+  .glass-chrome {
+    background: var(--color-primary);
+    color: var(--color-primary-foreground);
+  }
+  .glass-content {
+    background: var(--color-card);
+    color: var(--color-foreground);
+  }
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass-chrome {
+    background: var(--color-primary);
+    color: var(--color-primary-foreground);
+  }
+  .glass-content {
+    background: var(--color-card);
+    color: var(--color-foreground);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* The scheme-category marquee stays running under reduced-motion (it's a
+     slow, linear, user-requested ticker, not incidental UI motion) but at a
+     calmer pace, per WCAG 2.2.2's intent for auto-scrolling content. */
+  .marquee-track {
+    animation-duration: 90s !important;
+    animation-iteration-count: infinite !important;
+  }
+
+  /* Same reasoning: the hero slideshow's slide transition is the whole
+     point of the feature, not incidental UI motion. */
+  .hero-slideshow-track {
+    transition-duration: 700ms !important;
+  }
+}
+
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  animation: marquee-scroll 38s linear infinite;
 }
 

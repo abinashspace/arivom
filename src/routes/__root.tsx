@@ -18,8 +18,8 @@ import { AppHeader } from "../components/AppHeader";
 
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
+    <div className="flex min-h-screen items-center justify-center px-4">
+      <div className="glass-content max-w-md rounded-[28px] p-10 text-center">
         <h1 className="text-7xl font-bold text-foreground">404</h1>
         <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
         <p className="mt-2 text-sm text-muted-foreground">
@@ -46,8 +46,8 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   }, [error]);
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
+    <div className="flex min-h-screen items-center justify-center px-4">
+      <div className="glass-content max-w-md rounded-[28px] p-10 text-center">
         <h1 className="text-xl font-semibold tracking-tight text-foreground">
           This page didn't load
         </h1>
@@ -66,7 +66,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
           </button>
           <a
             href="/"
-            className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
+            className="inline-flex items-center justify-center rounded-md border border-border bg-card px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
           >
             Go home
           </a>
@@ -139,10 +139,26 @@ function RootComponent() {
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
       {import.meta.env.DEV && <Agentation />}
-      <footer className="mt-16 border-t border-border py-8">
-        <div className="mx-auto flex max-w-5xl flex-col gap-1 px-5 text-sm text-muted-foreground">
-          <span className="font-display font-bold text-primary">Arivom</span>
-          <span>Connecting People with Their Rights · Not an official government website.</span>
+      <footer className="mt-16 px-5 pb-8">
+        <div className="glass-content mx-auto flex max-w-5xl flex-col gap-4 rounded-[24px] p-6 text-sm text-muted-foreground sm:p-8">
+          <nav className="flex flex-wrap gap-x-6 gap-y-2">
+            <Link to="/" className="text-foreground/80 hover:text-foreground" activeOptions={{ exact: true }}>
+              Home
+            </Link>
+            <Link to="/find" className="text-foreground/80 hover:text-foreground">
+              Find My Schemes
+            </Link>
+            <Link to="/applications" className="text-foreground/80 hover:text-foreground">
+              My Applications
+            </Link>
+            <Link to="/about" className="text-foreground/80 hover:text-foreground">
+              About
+            </Link>
+          </nav>
+          <div className="flex flex-col gap-1">
+            <span className="font-display font-bold text-foreground">Arivom</span>
+            <span>Connecting People with Their Rights · Not an official government website.</span>
+          </div>
         </div>
       </footer>
     </QueryClientProvider>

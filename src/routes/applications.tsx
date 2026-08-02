@@ -27,12 +27,12 @@ function ApplicationsPage() {
   return (
     <main className="mx-auto max-w-2xl px-5 py-10">
       <h1 className="text-3xl font-extrabold">My applications</h1>
-      <p className="mt-2 text-sm text-muted-foreground">
+      <p className="mt-2 text-sm text-white/70">
         Schemes you marked as applied. Kept on this device only — no account, no server.
       </p>
 
       {records && records.length === 0 && (
-        <div className="mt-10 rounded-2xl border border-border bg-card p-8 text-center">
+        <div className="glass-content mt-10 rounded-[28px] p-8 text-center">
           <p className="text-muted-foreground">You haven't marked any scheme as applied yet.</p>
           <Link
             to="/find"
@@ -52,10 +52,10 @@ function ApplicationsPage() {
               key={r.id}
               to="/scheme/$schemeId"
               params={{ schemeId: r.id }}
-              className="flex items-center justify-between gap-3 rounded-2xl border border-border bg-card p-5 hover:border-primary"
+              className="flat-card flex items-center justify-between gap-3 rounded-2xl p-5 transition-colors hover:border-primary/60"
             >
               <div>
-                <h2 className="font-display text-lg font-bold">{scheme.name}</h2>
+                <h2 className="text-lg font-bold">{scheme.name}</h2>
                 <p className="mt-1 text-sm text-muted-foreground">
                   Marked applied on {new Date(r.appliedAt).toLocaleDateString("en-IN")}
                 </p>

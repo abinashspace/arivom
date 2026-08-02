@@ -36,7 +36,7 @@ function SchemeDetail() {
     return (
       <main className="mx-auto max-w-2xl px-5 py-16 text-center">
         <h1 className="text-2xl font-extrabold">Scheme not found</h1>
-        <Link to="/find" className="mt-6 inline-block font-semibold text-primary underline underline-offset-4">
+        <Link to="/find" className="mt-6 inline-block font-semibold text-white underline underline-offset-4">
           Back to the questionnaire
         </Link>
       </main>
@@ -45,17 +45,17 @@ function SchemeDetail() {
 
   return (
     <main className="mx-auto max-w-2xl px-5 py-10">
-      <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">{scheme.ministry}</p>
+      <p className="text-xs font-semibold uppercase tracking-widest text-white/60">{scheme.ministry}</p>
       <h1 className="mt-2 text-3xl font-extrabold">{scheme.name}</h1>
-      <p className="mt-3 text-muted-foreground">{scheme.summary}</p>
+      <p className="mt-3 text-white/70">{scheme.summary}</p>
 
-      <section className="mt-8 rounded-2xl bg-secondary p-5">
-        <h2 className="text-sm font-bold uppercase tracking-widest text-primary">What you get</h2>
+      <section className="glass-content mt-8 rounded-[28px] p-6">
+        <h2 className="text-lg font-bold text-foreground">What you get</h2>
         <p className="mt-2 text-foreground">{scheme.benefit}</p>
       </section>
 
-      <section className="mt-8">
-        <h2 className="text-sm font-bold uppercase tracking-widest text-primary">Documents required</h2>
+      <section className="glass-content mt-6 rounded-[28px] p-6">
+        <h2 className="text-lg font-bold text-foreground">Documents required</h2>
         <ul className="mt-3 space-y-2">
           {scheme.documents.map((d) => (
             <li key={d} className="flex gap-2 text-foreground/85">
@@ -66,8 +66,8 @@ function SchemeDetail() {
         </ul>
       </section>
 
-      <section className="mt-8">
-        <h2 className="text-sm font-bold uppercase tracking-widest text-primary">How to apply</h2>
+      <section className="glass-content mt-6 rounded-[28px] p-6">
+        <h2 className="text-lg font-bold text-foreground">How to apply</h2>
         <ol className="mt-3 space-y-3">
           {scheme.steps.map((s, i) => (
             <li key={s} className="flex gap-3">
@@ -80,18 +80,18 @@ function SchemeDetail() {
         </ol>
       </section>
 
-      <section className="mt-8 grid gap-3 sm:grid-cols-2">
+      <section className="mt-6 grid gap-3 sm:grid-cols-2">
         <a
           href={scheme.portal}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center justify-center gap-2 rounded-xl border border-border bg-card px-5 py-4 font-semibold text-foreground hover:border-primary"
+          className="glass-content flex items-center justify-center gap-2 rounded-xl px-5 py-4 font-semibold text-foreground transition-colors hover:border-primary/60"
         >
           <ExternalLink className="h-4 w-4" /> Official portal
         </a>
         <a
           href={`tel:${scheme.helpline.split(" ")[0]}`}
-          className="flex items-center justify-center gap-2 rounded-xl border border-border bg-card px-5 py-4 font-semibold text-foreground hover:border-primary"
+          className="glass-content flex items-center justify-center gap-2 rounded-xl px-5 py-4 font-semibold text-foreground transition-colors hover:border-primary/60"
         >
           <Phone className="h-4 w-4" /> {scheme.helpline}
         </a>
@@ -99,7 +99,7 @@ function SchemeDetail() {
 
       <button
         onClick={() => setApplied(toggleApplied(scheme.id))}
-        className={`mt-8 flex w-full items-center justify-center gap-2 rounded-xl px-6 py-4 font-display text-lg font-bold transition-colors ${
+        className={`mt-8 flex w-full items-center justify-center gap-2 rounded-xl px-6 py-4 text-lg font-bold transition-colors ${
           applied
             ? "border border-primary bg-secondary text-primary"
             : "bg-primary text-primary-foreground hover:bg-primary/90"
@@ -108,7 +108,7 @@ function SchemeDetail() {
         <CheckCircle2 className="h-5 w-5" />
         {applied ? "Marked as applied" : "Mark as applied"}
       </button>
-      <p className="mt-3 text-center text-xs text-muted-foreground">
+      <p className="mt-3 text-center text-xs text-white/60">
         Saved only on this device so you can track it in My Applications.
       </p>
     </main>

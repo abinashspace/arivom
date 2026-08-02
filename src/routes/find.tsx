@@ -20,7 +20,7 @@ export const Route = createFileRoute("/find")({
 });
 
 const fieldClass =
-  "mt-2 w-full rounded-xl border border-input bg-card px-4 py-3 text-base text-foreground outline-none focus:border-primary";
+  "mt-2 w-full rounded-xl border border-input bg-card px-4 py-3 text-base text-foreground focus:border-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary";
 const labelClass = "block text-sm font-semibold text-foreground";
 
 function FindPage() {
@@ -56,12 +56,12 @@ function FindPage() {
 
   return (
     <main className="mx-auto max-w-2xl px-5 py-10">
-      <h1 className="text-3xl font-extrabold text-foreground">Find my schemes</h1>
-      <p className="mt-2 text-sm text-muted-foreground">
+      <h1 className="text-3xl font-extrabold text-white">Find my schemes</h1>
+      <p className="mt-2 text-sm text-white/70">
         Eight quick questions. Nothing is uploaded — your answers stay on this device.
       </p>
 
-      <form onSubmit={submit} className="mt-8 space-y-6">
+      <form onSubmit={submit} className="glass-content mt-8 space-y-6 rounded-[28px] p-6 sm:p-8">
         <div>
           <label className={labelClass} htmlFor="age">
             Age
@@ -102,16 +102,18 @@ function FindPage() {
             onChange={(e) => set("income", e.target.value)}
             className={fieldClass}
           />
-          <div className="mt-3 flex gap-2">
+          <div className="mt-3 flex gap-2" role="radiogroup" aria-label="Income basis">
             {(["individual", "household"] as const).map((b) => (
               <button
                 type="button"
                 key={b}
+                role="radio"
+                aria-checked={form.incomeBasis === b}
                 onClick={() => set("incomeBasis", b)}
                 className={`rounded-full border px-4 py-2 text-sm font-semibold capitalize transition-colors ${
                   form.incomeBasis === b
                     ? "border-primary bg-primary text-primary-foreground"
-                    : "border-border bg-card text-muted-foreground"
+                    : "border-border bg-card text-muted-foreground hover:border-primary/50 hover:text-foreground"
                 }`}
               >
                 {b}
@@ -170,17 +172,21 @@ function FindPage() {
         </div>
 
         <div>
-          <span className={labelClass}>Do you have a certified disability (40% or more)?</span>
-          <div className="mt-3 flex gap-2">
+          <span className={labelClass} id="disability-label">
+            Do you have a certified disability (40% or more)?
+          </span>
+          <div className="mt-3 flex gap-2" role="radiogroup" aria-labelledby="disability-label">
             {(["no", "yes"] as const).map((v) => (
               <button
                 type="button"
                 key={v}
+                role="radio"
+                aria-checked={form.disability === v}
                 onClick={() => set("disability", v)}
                 className={`rounded-full border px-5 py-2 text-sm font-semibold capitalize transition-colors ${
                   form.disability === v
                     ? "border-primary bg-primary text-primary-foreground"
-                    : "border-border bg-card text-muted-foreground"
+                    : "border-border bg-card text-muted-foreground hover:border-primary/50 hover:text-foreground"
                 }`}
               >
                 {v}

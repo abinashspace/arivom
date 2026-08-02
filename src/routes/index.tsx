@@ -1,6 +1,29 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
+import { useEffect, useState } from "react";
 import heroFamily from "@/assets/hero-family.png";
+import heroFarmerField from "@/assets/hero-farmer-field.png";
+import heroStudentsClassroom from "@/assets/hero-students-classroom.png";
+import heroFarmerPhone from "@/assets/hero-farmer-phone.png";
+
+const HERO_IMAGES = [
+  {
+    src: heroFamily,
+    alt: "A mother and her two children reading government scheme details on a phone outside their home",
+  },
+  {
+    src: heroFarmerField,
+    alt: "A farmer scattering seed by hand across a green paddy field",
+  },
+  {
+    src: heroStudentsClassroom,
+    alt: "Students working on laptops in a school computer lab",
+  },
+  {
+    src: heroFarmerPhone,
+    alt: "A farmer smiling while checking his phone, holding a young plant sapling",
+  },
+] as const;
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -21,21 +44,48 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
+function HeroSlideshow() {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setIndex((i) => (i + 1) % HERO_IMAGES.length);
+    }, 2000);
+    return () => clearInterval(id);
+  }, []);
+
+  return (
+    <div className="glass-chrome rounded-[36px] p-3 md:w-1/2">
+      <div className="h-80 w-full overflow-hidden rounded-[26px] md:h-[480px]">
+        <div
+          className="hero-slideshow-track flex h-full transition-transform duration-700 ease-in-out"
+          style={{ transform: `translateX(-${index * 100}%)` }}
+        >
+          {HERO_IMAGES.map((img) => (
+            <img
+              key={img.src}
+              src={img.src}
+              alt={img.alt}
+              className="h-full w-full shrink-0 object-cover"
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function Index() {
   return (
-    <main className="bg-primary">
-      <section className="mx-auto flex max-w-6xl flex-col items-center gap-12 px-6 pb-20 pt-12 md:flex-row md:items-center md:pt-20">
-        <div className="flex flex-col items-start text-left md:w-1/2">
+    <main>
+      <section className="mx-auto flex max-w-6xl flex-col items-center gap-8 px-6 pb-20 pt-12 md:flex-row md:items-center md:pt-20">
+        <div className="glass-chrome flex flex-col items-start rounded-[32px] p-10 text-left md:w-1/2">
           <span className="inline-flex rounded-full bg-accent px-4 py-1.5 font-mono text-xs tracking-tight text-accent-foreground">
             GOVERNMENT WELFARE SCHEMES
           </span>
 
-          <h1 className="display-heading mt-6 text-7xl text-white md:text-8xl lg:text-[130px]">
-            Arivom
-          </h1>
-          <p className="mt-2 text-lg text-white/80 md:text-xl">
-            Connecting People with Their Rights
-          </p>
+          <h1 className="display-heading mt-6 text-7xl md:text-8xl lg:text-[110px]">Arivom</h1>
+          <p className="mt-2 text-lg text-white/80 md:text-xl">Connecting People with Their Rights</p>
 
           <Link
             to="/find"
@@ -50,19 +100,11 @@ function Index() {
           </p>
         </div>
 
-        <div className="md:w-1/2">
-          <img
-            src={heroFamily}
-            alt="A mother and her two children reading government scheme details on a phone outside their home"
-            width={1200}
-            height={1408}
-            className="h-80 w-full rounded-[32px] object-cover md:h-[520px]"
-          />
-        </div>
+        <HeroSlideshow />
       </section>
 
       <section className="mx-auto max-w-3xl px-6 pb-20">
-        <div className="rounded-[32px] bg-card p-8">
+        <div className="glass-content rounded-[32px] p-8">
           <p className="text-base leading-relaxed text-muted-foreground">
             Millions of eligible citizens never receive welfare benefits — not because they don't
             qualify, but because no one told them the scheme existed. Arivom checks your eligibility

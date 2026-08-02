@@ -21,7 +21,7 @@ function AboutPage() {
     <main className="mx-auto max-w-2xl px-5 py-10">
       <h1 className="text-3xl font-extrabold">About Arivom</h1>
 
-      <section className="mt-8 space-y-4 text-foreground/85">
+      <section className="glass-content mt-8 space-y-4 rounded-[28px] p-6 sm:p-8">
         <p>
           India runs hundreds of welfare schemes — pensions, scholarships, housing support, health
           cover, income transfers. Yet millions of people who qualify never receive a rupee of it.
@@ -35,8 +35,8 @@ function AboutPage() {
         </p>
       </section>
 
-      <section className="mt-10">
-        <h2 className="text-sm font-bold uppercase tracking-widest text-primary">How matching works</h2>
+      <section className="glass-content mt-6 rounded-[28px] p-6 sm:p-8">
+        <h2 className="text-xl font-bold text-foreground">How matching works</h2>
         <p className="mt-3 text-foreground/85">
           There is no black box and no AI guesswork. Every scheme in Arivom carries structured
           eligibility fields — age range, income ceiling, occupation, state, social category, gender
@@ -45,16 +45,16 @@ function AboutPage() {
         </p>
       </section>
 
-      <section className="mt-10">
-        <h2 className="text-sm font-bold uppercase tracking-widest text-primary">Your privacy</h2>
+      <section className="glass-content mt-6 rounded-[28px] p-6 sm:p-8">
+        <h2 className="text-xl font-bold text-foreground">Your privacy</h2>
         <p className="mt-3 text-foreground/85">
           Arivom has no accounts and no login. Your answers and your applied-scheme list are stored
           only in your own browser. Nothing is uploaded, and nothing identifies you.
         </p>
       </section>
 
-      <section className="mt-10">
-        <h2 className="text-sm font-bold uppercase tracking-widest text-primary">What Arivom is not</h2>
+      <section className="glass-content mt-6 rounded-[28px] p-6 sm:p-8">
+        <h2 className="text-xl font-bold text-foreground">What Arivom is not</h2>
         <ul className="mt-3 space-y-2 text-foreground/85">
           {[
             "It is not a government website — always confirm on the official portal linked in each scheme.",
