@@ -31,12 +31,15 @@
   --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
   --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
   --color-primary-foreground: var(--primary-foreground);
   --color-secondary: var(--secondary);
+  --color-secondary-hover: var(--secondary-hover);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
   --color-accent-foreground: var(--accent-foreground);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
@@ -67,33 +70,37 @@
 }
 
 :root {
-  /* Site color schema: Primary #003366, Accent #FF9800, Success #2E7D32,
-     Background #F4F7FB, Primary #1D4ED8, Accent #0EA5E9, Cards #FFFFFF,
-     Success #22C55E, Borders #CBD5E1, Text #0F172A */
+  /* Site color schema: Background #F8FAFC, Cards #FFFFFF, Primary #0F4C81
+     (+hover #0C3B66), Secondary #0284C7 (+hover #0369A1), Accent #06B6D4
+     (+hover #0891B2), Heading #0F172A, Body #64748B, Borders #CBD5E1,
+     Success #22C55E, Warning #F59E0B, Danger #EF4444 */
   --radius: 0.5rem;
-  --background: oklch(0.975 0.006 255.5); /* #F4F7FB */
-  --foreground: oklch(0.208 0.04 265.8); /* #0F172A */
+  --background: oklch(0.984 0.003 247.9); /* #F8FAFC */
+  --foreground: oklch(0.208 0.04 265.8); /* #0F172A — headings */
   --card: oklch(1 0 0); /* #FFFFFF */
   --card-foreground: oklch(0.208 0.04 265.8);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.208 0.04 265.8);
-  --primary: oklch(0.259 0.09 256.5); /* #00224E — sunset-theme navy */
+  --primary: oklch(0.409 0.106 250.2); /* #0F4C81 */
+  --primary-hover: oklch(0.347 0.089 250.8); /* #0C3B66 */
   --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.94 0.012 255.5); /* light blue-gray surface */
-  --secondary-foreground: oklch(0.208 0.04 265.8);
-  --muted: oklch(0.94 0.012 255.5);
-  --muted-foreground: oklch(0.48 0.025 260); /* mid blue-gray secondary text */
-  --accent: oklch(0.833 0.15 84); /* #F6BF41 — sunset-theme gold */
-  --accent-foreground: oklch(0.208 0.04 265.8); /* dark text — white fails contrast on this gold */
+  --secondary: oklch(0.588 0.139 242); /* #0284C7 — brand secondary, not a neutral surface */
+  --secondary-hover: oklch(0.5 0.119 242.7); /* #0369A1 */
+  --secondary-foreground: oklch(1 0 0);
+  --muted: oklch(0.94 0.012 255.5); /* neutral light surface */
+  --muted-foreground: oklch(0.554 0.041 257.4); /* #64748B — body text */
+  --accent: oklch(0.715 0.126 215.2); /* #06B6D4 */
+  --accent-hover: oklch(0.609 0.111 221.7); /* #0891B2 */
+  --accent-foreground: oklch(0.208 0.04 265.8); /* dark text — white fails contrast on this cyan */
   --success: oklch(0.723 0.192 149.6); /* #22C55E */
   --success-foreground: oklch(0.208 0.04 265.8); /* dark text — white fails contrast on this green */
-  --warning: oklch(0.839 0.162 84.4); /* #FBC02D, unchanged — not part of this palette */
+  --warning: oklch(0.769 0.165 70.1); /* #F59E0B */
   --warning-foreground: oklch(0.208 0.04 265.8);
-  --destructive: oklch(0.568 0.2 26.4); /* #D32F2F, unchanged — not part of this palette */
+  --destructive: oklch(0.637 0.208 25.3); /* #EF4444 */
   --destructive-foreground: oklch(1 0 0);
   --border: oklch(0.869 0.02 252.9); /* #CBD5E1 */
   --input: oklch(0.869 0.02 252.9);
-  --ring: oklch(0.259 0.09 256.5);
+  --ring: oklch(0.409 0.106 250.2);
   --shadow-soft: none;
   --shadow-lift: none;
 
@@ -119,17 +126,10 @@
 
   body {
     background-color: var(--color-background);
-    /* Sunset palette: #02050A near-black, #00224E navy, #4376AB steel blue, #F6BF41 gold horizon glow */
-    background-image:
-      radial-gradient(circle at 20% 90%, oklch(0.833 0.15 84 / 0.45), transparent 45%),
-      radial-gradient(circle at 85% 10%, oklch(0.554 0.1 250.9 / 0.4), transparent 50%),
-      linear-gradient(180deg, oklch(0.113 0.017 250.8) 0%, oklch(0.259 0.09 256.5) 55%, oklch(0.554 0.1 250.9) 100%);
-    background-attachment: fixed;
-    background-size: cover;
     min-height: 100vh;
-    /* Page backdrop is always the dark gradient now, so default text is white;
-       .glass-content explicitly overrides to dark foreground for panel content. */
-    color: #fff;
+    /* Body copy defaults to the palette's "Body Text" color; headings
+       below opt into the darker "Heading" color explicitly. */
+    color: var(--color-muted-foreground);
     font-family: var(--font-sans);
   }
 
@@ -140,6 +140,7 @@
     font-weight: 700;
     letter-spacing: -0.01em;
     line-height: 1.15;
+    color: var(--color-foreground);
   }
 
   :focus-visible {
@@ -159,80 +160,31 @@
 }
 
 /*
- * Glassmorphism surfaces.
+ * Flat surfaces (formerly a glassmorphism system — retired along with the
+ * dark backdrop when the flat light palette replaced it; class names kept
+ * so no markup had to change).
  *
- * Two tiers, both carrying the same signature (blur + thin light border +
- * soft wide shadow) so glass reads as a skin on any surface, not a
- * separate floating control layer:
- *
- * .glass-chrome  — very translucent, for large single-line brand surfaces
- *                  (header, hero) where the backdrop's color is the point.
- *                  White text.
- * .glass-content — higher-opacity scrim, for anything carrying body copy
- *                  (cards, form panels, prose). Still blurred and bordered,
- *                  just opaque enough to guarantee contrast for dark text
- *                  regardless of what's behind it.
+ * .glass-chrome  — solid Primary-navy panel, white text. Large brand
+ *                  surfaces: header, hero.
+ * .glass-content / .flat-card — solid white card, dark text, hairline
+ *                  border. Anything carrying body copy.
  */
 .glass-chrome {
-  background: rgba(255, 255, 255, 0.14);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
-  color: #fff;
+  background: var(--color-primary);
+  border: 1px solid var(--color-primary-hover);
+  color: var(--color-primary-foreground);
 }
 
 .glass-chrome :focus-visible {
-  outline-color: #fff;
+  outline-color: var(--color-primary-foreground);
 }
 
-.glass-content {
-  background: rgba(255, 255, 255, 0.82);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
-  color: var(--color-foreground);
-}
-
-/* Same visual outcome as .glass-content (opaque surface, border, soft shadow,
-   dark text) but no backdrop-filter — for repeated list items where many
-   concurrent blur regions would be a real GPU cost (e.g. scheme result cards). */
+.glass-content,
 .flat-card {
   background: var(--color-card);
   border: 1px solid var(--color-border);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
   color: var(--color-foreground);
-}
-
-/* Fallback: browsers/users that turn off transparency effects get solid surfaces instead. */
-@media (prefers-reduced-transparency: reduce) {
-  .glass-chrome,
-  .glass-content {
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    border-color: var(--color-border);
-    box-shadow: none;
-  }
-  .glass-chrome {
-    background: var(--color-primary);
-    color: var(--color-primary-foreground);
-  }
-  .glass-content {
-    background: var(--color-card);
-    color: var(--color-foreground);
-  }
-}
-
-@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-  .glass-chrome {
-    background: var(--color-primary);
-    color: var(--color-primary-foreground);
-  }
-  .glass-content {
-    background: var(--color-card);
-    color: var(--color-foreground);
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {

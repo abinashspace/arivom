@@ -79,12 +79,12 @@ function Index() {
   return (
     <main>
       <section className="mx-auto flex max-w-6xl flex-col items-center gap-8 px-6 pb-20 pt-12 md:flex-row md:items-center md:pt-20">
-        <div className="glass-chrome flex flex-col items-start rounded-[32px] p-10 text-left md:w-1/2">
+        <div className="glass-chrome w-full min-w-0 flex-col items-start rounded-[32px] p-6 text-left flex sm:p-10 md:w-1/2">
           <span className="inline-flex rounded-full bg-accent px-4 py-1.5 font-mono text-xs tracking-tight text-accent-foreground">
             GOVERNMENT WELFARE SCHEMES
           </span>
 
-          <h1 className="display-heading mt-6 text-7xl md:text-8xl lg:text-[110px]">Arivom</h1>
+          <h1 className="display-heading mt-6 text-6xl text-white sm:text-7xl md:text-8xl lg:text-[110px]">Arivom</h1>
           <p className="mt-2 text-lg text-white/80 md:text-xl">Connecting People with Their Rights</p>
 
           <Link

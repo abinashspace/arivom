@@ -27,7 +27,7 @@ function ApplicationsPage() {
   return (
     <main className="mx-auto max-w-2xl px-5 py-10">
       <h1 className="text-3xl font-extrabold">My applications</h1>
-      <p className="mt-2 text-sm text-white/70">
+      <p className="mt-2 text-sm text-muted-foreground">
         Schemes you marked as applied. Kept on this device only — no account, no server.
       </p>
 

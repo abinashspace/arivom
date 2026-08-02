@@ -56,8 +56,8 @@ function FindPage() {
 
   return (
     <main className="mx-auto max-w-2xl px-5 py-10">
-      <h1 className="text-3xl font-extrabold text-white">Find my schemes</h1>
-      <p className="mt-2 text-sm text-white/70">
+      <h1 className="text-3xl font-extrabold">Find my schemes</h1>
+      <p className="mt-2 text-sm text-muted-foreground">
         Eight quick questions. Nothing is uploaded — your answers stay on this device.
       </p>
 
@@ -197,7 +197,7 @@ function FindPage() {
 
         <button
           type="submit"
-          className="w-full rounded-lg bg-primary px-6 py-4 font-sans text-base font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+          className="w-full rounded-lg bg-primary px-6 py-4 font-sans text-base font-medium text-primary-foreground transition-colors hover:bg-primary-hover"
         >
           See my schemes
         </button>

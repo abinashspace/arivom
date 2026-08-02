@@ -72,7 +72,7 @@ function AboutPage() {
 
       <Link
         to="/find"
-        className="mt-12 block rounded-lg bg-primary px-6 py-4 text-center font-sans text-base font-medium text-primary-foreground hover:bg-primary/90"
+        className="mt-12 block rounded-lg bg-primary px-6 py-4 text-center font-sans text-base font-medium text-primary-foreground hover:bg-primary-hover"
       >
         Find My Scheme
       </Link>

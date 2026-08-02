@@ -36,7 +36,7 @@ function SchemeDetail() {
     return (
       <main className="mx-auto max-w-2xl px-5 py-16 text-center">
         <h1 className="text-2xl font-extrabold">Scheme not found</h1>
-        <Link to="/find" className="mt-6 inline-block font-semibold text-white underline underline-offset-4">
+        <Link to="/find" className="mt-6 inline-block font-semibold text-primary underline underline-offset-4">
           Back to the questionnaire
         </Link>
       </main>
@@ -45,9 +45,9 @@ function SchemeDetail() {
 
   return (
     <main className="mx-auto max-w-2xl px-5 py-10">
-      <p className="text-xs font-semibold uppercase tracking-widest text-white/60">{scheme.ministry}</p>
+      <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">{scheme.ministry}</p>
       <h1 className="mt-2 text-3xl font-extrabold">{scheme.name}</h1>
-      <p className="mt-3 text-white/70">{scheme.summary}</p>
+      <p className="mt-3 text-muted-foreground">{scheme.summary}</p>
 
       <section className="glass-content mt-8 rounded-[28px] p-6">
         <h2 className="text-lg font-bold text-foreground">What you get</h2>
@@ -101,14 +101,14 @@ function SchemeDetail() {
         onClick={() => setApplied(toggleApplied(scheme.id))}
         className={`mt-8 flex w-full items-center justify-center gap-2 rounded-xl px-6 py-4 text-lg font-bold transition-colors ${
           applied
-            ? "border border-primary bg-secondary text-primary"
-            : "bg-primary text-primary-foreground hover:bg-primary/90"
+            ? "border border-primary bg-muted text-primary"
+            : "bg-primary text-primary-foreground hover:bg-primary-hover"
         }`}
       >
         <CheckCircle2 className="h-5 w-5" />
         {applied ? "Marked as applied" : "Mark as applied"}
       </button>
-      <p className="mt-3 text-center text-xs text-white/60">
+      <p className="mt-3 text-center text-xs text-muted-foreground">
         Saved only on this device so you can track it in My Applications.
       </p>
     </main>

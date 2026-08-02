@@ -29,7 +29,7 @@ function MarqueeContent({ hidden }: { hidden?: boolean }) {
 
 export function AppHeader() {
   return (
-    <header className="relative overflow-hidden py-3" aria-label="Scheme categories">
+    <header className="relative overflow-hidden bg-primary py-3" aria-label="Scheme categories">
       <div className="marquee-track flex w-max">
         <MarqueeContent />
         <MarqueeContent hidden />
