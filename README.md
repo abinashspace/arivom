@@ -1,24 +1,25 @@
-# Your Awesome Website
+# Arivom
 
-SO AMKE A WESITE LIKE THIS
+Arivom helps Indian citizens discover the government welfare schemes they're
+eligible for and guides them through applying. No accounts, no backend —
+everything runs client-side and your answers stay on your device.
 
-This project was built with [Lovable](https://lovable.dev).
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/34cd6145-9818-4056-8e63-f9ce0d85281d).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+Arivom is **not an official government website**; it's an independent tool
+that curates and matches you against real Central and Tamil Nadu state
+welfare scheme data.
 
 ## Development
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
 
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
+git clone https://github.com/abinashspace/arivom.git
+cd arivom
 npm i
 npm run dev
 ```
+
+## Stack
+
+- [TanStack Start](https://tanstack.com/start) (React 19, SSR) + TanStack Router
+- Tailwind CSS v4
