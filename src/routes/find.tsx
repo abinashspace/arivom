@@ -1,6 +1,15 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
-import { CATEGORIES, INDIAN_STATES, OCCUPATIONS, type Category, type Gender, type Occupation } from "@/lib/schemes";
+import {
+  CATEGORIES,
+  INDIAN_STATES,
+  MARITAL_STATUSES,
+  OCCUPATIONS,
+  type Category,
+  type Gender,
+  type MaritalStatus,
+  type Occupation,
+} from "@/lib/schemes";
 import { saveAnswers, type Answers } from "@/lib/matching";
 
 export const Route = createFileRoute("/find")({
@@ -28,6 +37,7 @@ function FindPage() {
   const [form, setForm] = useState({
     age: "30",
     gender: "female" as Gender,
+    maritalStatus: "any" as MaritalStatus | "any",
     income: "150000",
     incomeBasis: "household" as "individual" | "household",
     occupation: "farmer" as Occupation,
@@ -43,6 +53,7 @@ function FindPage() {
     const answers: Answers = {
       age: Number(form.age) || 0,
       gender: form.gender,
+      maritalStatus: form.maritalStatus,
       income: Number(form.income) || 0,
       incomeBasis: form.incomeBasis,
       occupation: form.occupation,
@@ -87,6 +98,30 @@ function FindPage() {
             <option value="male">Male</option>
             <option value="other">Other</option>
           </select>
+        </div>
+
+        <div>
+          <span className={labelClass} id="marital-status-label">
+            Marital status
+          </span>
+          <div className="mt-3 flex flex-wrap gap-2" role="radiogroup" aria-labelledby="marital-status-label">
+            {MARITAL_STATUSES.map((m) => (
+              <button
+                type="button"
+                key={m.value}
+                role="radio"
+                aria-checked={form.maritalStatus === m.value}
+                onClick={() => set("maritalStatus", m.value)}
+                className={`rounded-full border px-4 py-2 text-sm font-semibold transition-colors ${
+                  form.maritalStatus === m.value
+                    ? "border-primary bg-primary text-primary-foreground"
+                    : "border-border bg-card text-muted-foreground hover:border-primary/50 hover:text-foreground"
+                }`}
+              >
+                {m.label}
+              </button>
+            ))}
+          </div>
         </div>
 
         <div>

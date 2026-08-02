@@ -14,6 +14,7 @@ const HERO_IMAGES = [
   {
     src: heroFarmerField,
     alt: "A farmer scattering seed by hand across a green paddy field",
+    objectPosition: "62% 58%",
   },
   {
     src: heroStudentsClassroom,
@@ -45,28 +46,53 @@ export const Route = createFileRoute("/")({
 });
 
 function HeroSlideshow() {
+  const slideCount = HERO_IMAGES.length;
+  const slides = [...HERO_IMAGES, HERO_IMAGES[0]];
   const [index, setIndex] = useState(0);
+  const [transitionEnabled, setTransitionEnabled] = useState(true);
 
   useEffect(() => {
     const id = setInterval(() => {
-      setIndex((i) => (i + 1) % HERO_IMAGES.length);
+      setIndex((i) => i + 1);
     }, 2000);
     return () => clearInterval(id);
   }, []);
+
+  useEffect(() => {
+    if (index !== slideCount) return;
+    const id = setTimeout(() => {
+      setTransitionEnabled(false);
+      setIndex(0);
+    }, 700);
+    return () => clearTimeout(id);
+  }, [index, slideCount]);
+
+  useEffect(() => {
+    if (transitionEnabled) return;
+    let secondFrame = 0;
+    const firstFrame = requestAnimationFrame(() => {
+      secondFrame = requestAnimationFrame(() => setTransitionEnabled(true));
+    });
+    return () => {
+      cancelAnimationFrame(firstFrame);
+      cancelAnimationFrame(secondFrame);
+    };
+  }, [transitionEnabled]);
 
   return (
     <div className="glass-chrome rounded-[36px] p-3 md:w-1/2">
       <div className="h-80 w-full overflow-hidden rounded-[26px] md:h-[480px]">
         <div
-          className="hero-slideshow-track flex h-full transition-transform duration-700 ease-in-out"
+          className={`hero-slideshow-track flex h-full ease-in-out ${transitionEnabled ? "transition-transform duration-700" : ""}`}
           style={{ transform: `translateX(-${index * 100}%)` }}
         >
-          {HERO_IMAGES.map((img) => (
+          {slides.map((img, i) => (
             <img
-              key={img.src}
+              key={`${img.src}-${i}`}
               src={img.src}
               alt={img.alt}
               className="h-full w-full shrink-0 object-cover"
+              style={"objectPosition" in img ? { objectPosition: img.objectPosition } : undefined}
             />
           ))}
         </div>

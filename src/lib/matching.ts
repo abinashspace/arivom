@@ -1,8 +1,9 @@
-import { schemes, type Category, type Gender, type Occupation, type Scheme } from "./schemes";
+import { schemes, type Category, type Gender, type MaritalStatus, type Occupation, type Scheme } from "./schemes";
 
 export interface Answers {
   age: number;
   gender: Gender;
+  maritalStatus: MaritalStatus | "any";
   income: number;
   incomeBasis: "individual" | "household";
   occupation: Occupation;
@@ -44,6 +45,15 @@ export function evaluate(scheme: Scheme, a: Answers): MatchResult {
       ok
         ? `This scheme is meant for ${e.gender.join(" / ")} applicants.`
         : `Only ${e.gender.join(" / ")} applicants are eligible.`,
+    );
+  }
+
+  if (e.maritalStatus) {
+    const ok = a.maritalStatus !== "any" && e.maritalStatus.includes(a.maritalStatus);
+    (ok ? reasons : failures).push(
+      ok
+        ? `Your marital status (${a.maritalStatus}) matches this scheme's requirement.`
+        : `This scheme requires marital status: ${e.maritalStatus.join(" / ")}.`,
     );
   }
 

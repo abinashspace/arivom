@@ -206,8 +206,12 @@
   }
 
   /* Same reasoning: the hero slideshow's slide transition is the whole
-     point of the feature, not incidental UI motion. */
-  .hero-slideshow-track {
+     point of the feature, not incidental UI motion. Scoped to only apply
+     while the track's own transition-transform class is present, so the
+     loop's instant (no-transition) reset snap isn't forced into a 700ms
+     animation by this !important override — that was sliding the track
+     backward through every slide on each loop reset. */
+  .hero-slideshow-track.transition-transform {
     transition-duration: 700ms !important;
   }
 }
