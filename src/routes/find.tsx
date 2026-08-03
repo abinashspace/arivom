@@ -35,30 +35,40 @@ const labelClass = "block text-sm font-semibold text-foreground";
 function FindPage() {
   const navigate = useNavigate();
   const [form, setForm] = useState({
-    age: "30",
-    gender: "female" as Gender,
+    age: "",
+    gender: "" as Gender | "",
     maritalStatus: "any" as MaritalStatus | "any",
-    income: "150000",
-    incomeBasis: "household" as "individual" | "household",
-    occupation: "farmer" as Occupation,
-    state: "Tamil Nadu",
-    category: "general" as Category,
-    disability: "no",
+    income: "",
+    incomeBasis: "" as "individual" | "household" | "",
+    occupation: "" as Occupation | "",
+    state: "",
+    category: "" as Category | "",
+    disability: "" as "yes" | "no" | "",
   });
+  const [error, setError] = useState<string | null>(null);
 
   const set = (k: keyof typeof form, v: string) => setForm((f) => ({ ...f, [k]: v }));
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!form.incomeBasis) {
+      setError("Please choose whether that's your individual or household income.");
+      return;
+    }
+    if (!form.disability) {
+      setError("Please answer the disability question.");
+      return;
+    }
+    setError(null);
     const answers: Answers = {
       age: Number(form.age) || 0,
-      gender: form.gender,
+      gender: form.gender as Gender,
       maritalStatus: form.maritalStatus,
       income: Number(form.income) || 0,
       incomeBasis: form.incomeBasis,
-      occupation: form.occupation,
+      occupation: form.occupation as Occupation,
       state: form.state,
-      category: form.category,
+      category: form.category as Category,
       disability: form.disability === "yes",
     };
     saveAnswers(answers);
@@ -83,6 +93,7 @@ function FindPage() {
             min={0}
             max={120}
             required
+            placeholder="e.g. 30"
             value={form.age}
             onChange={(e) => set("age", e.target.value)}
             className={fieldClass}
@@ -93,7 +104,16 @@ function FindPage() {
           <label className={labelClass} htmlFor="gender">
             Gender
           </label>
-          <select id="gender" value={form.gender} onChange={(e) => set("gender", e.target.value)} className={fieldClass}>
+          <select
+            id="gender"
+            required
+            value={form.gender}
+            onChange={(e) => set("gender", e.target.value)}
+            className={fieldClass}
+          >
+            <option value="" disabled>
+              Select gender
+            </option>
             <option value="female">Female</option>
             <option value="male">Male</option>
             <option value="other">Other</option>
@@ -133,6 +153,7 @@ function FindPage() {
             type="number"
             min={0}
             required
+            placeholder="e.g. 150000"
             value={form.income}
             onChange={(e) => set("income", e.target.value)}
             className={fieldClass}
@@ -163,10 +184,14 @@ function FindPage() {
           </label>
           <select
             id="occupation"
+            required
             value={form.occupation}
             onChange={(e) => set("occupation", e.target.value)}
             className={fieldClass}
           >
+            <option value="" disabled>
+              Select occupation
+            </option>
             {OCCUPATIONS.map((o) => (
               <option key={o.value} value={o.value}>
                 {o.label}
@@ -179,7 +204,16 @@ function FindPage() {
           <label className={labelClass} htmlFor="state">
             State
           </label>
-          <select id="state" value={form.state} onChange={(e) => set("state", e.target.value)} className={fieldClass}>
+          <select
+            id="state"
+            required
+            value={form.state}
+            onChange={(e) => set("state", e.target.value)}
+            className={fieldClass}
+          >
+            <option value="" disabled>
+              Select state
+            </option>
             {INDIAN_STATES.map((s) => (
               <option key={s} value={s}>
                 {s}
@@ -194,10 +228,14 @@ function FindPage() {
           </label>
           <select
             id="category"
+            required
             value={form.category}
             onChange={(e) => set("category", e.target.value)}
             className={fieldClass}
           >
+            <option value="" disabled>
+              Select social category
+            </option>
             {CATEGORIES.map((c) => (
               <option key={c.value} value={c.value}>
                 {c.label}
@@ -229,6 +267,12 @@ function FindPage() {
             ))}
           </div>
         </div>
+
+        {error && (
+          <p role="alert" className="text-sm font-semibold text-destructive">
+            {error}
+          </p>
+        )}
 
         <button
           type="submit"
