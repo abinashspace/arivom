@@ -1,0 +1,4 @@
+# The repo stores LF. Without this, core.autocrlf=true on Windows checks files
+# out as CRLF, which breaks `npm run lint` (prettier wants LF) and shows
+# generated files as modified when their content is identical.
+* text=auto eol=lf

@@ -13,7 +13,6 @@ import appCss from "../styles.css?url";
 import { AppHeader } from "../components/AppHeader";
 import { Logo } from "../components/Logo";
 
-
 function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center px-4">
@@ -164,4 +163,3 @@ function RootComponent() {
     </QueryClientProvider>
   );
 }
-
