@@ -7,12 +7,9 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
-
-import { Agentation } from "agentation";
+import { type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
-import { reportLovableError } from "../lib/lovable-error-reporting";
 import { AppHeader } from "../components/AppHeader";
 import { Logo } from "../components/Logo";
 
@@ -42,9 +39,6 @@ function NotFoundComponent() {
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
   const router = useRouter();
-  useEffect(() => {
-    reportLovableError(error, { boundary: "tanstack_root_error_component" });
-  }, [error]);
 
   return (
     <div className="flex min-h-screen items-center justify-center px-4">
@@ -107,7 +101,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;450;500;600;700&family=JetBrains+Mono:wght@400&display=swap",
       },
-      // ?v=2 forces browsers to drop the cached Lovable favicon.
+      // ?v=2 forces browsers to drop the previously cached favicon.
       { rel: "icon", href: "/favicon.ico?v=2", sizes: "32x32" },
       { rel: "icon", href: "/favicon.svg?v=2", type: "image/svg+xml", sizes: "any" },
       { rel: "apple-touch-icon", href: "/apple-touch-icon.png?v=2" },
@@ -142,7 +136,6 @@ function RootComponent() {
       <AppHeader />
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
-      {import.meta.env.DEV && <Agentation />}
       <footer className="mt-16 px-5 pb-8">
         <div className="glass-content mx-auto flex max-w-5xl flex-col gap-4 rounded-[24px] p-6 text-sm text-muted-foreground sm:p-8">
           <nav className="flex flex-wrap gap-x-6 gap-y-2">
