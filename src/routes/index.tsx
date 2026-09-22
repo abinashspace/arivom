@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
+import { Logo } from "../components/Logo";
 import { useEffect, useState } from "react";
 import heroFamily from "@/assets/hero-family.png";
 import heroFarmerField from "@/assets/hero-farmer-field.png";
@@ -110,7 +111,8 @@ function Index() {
             GOVERNMENT WELFARE SCHEMES
           </span>
 
-          <h1 className="display-heading mt-6 text-6xl text-white sm:text-7xl md:text-8xl lg:text-[110px]">Arivom</h1>
+          <Logo tone="light" className="mt-8 h-16 w-16 sm:h-20 sm:w-20" />
+          <h1 className="display-heading mt-4 text-6xl text-white sm:text-7xl md:text-8xl lg:text-[110px]">Arivom</h1>
           <p className="mt-2 text-lg text-white/80 md:text-xl">Connecting People with Their Rights</p>
 
           <Link

@@ -14,6 +14,7 @@ import { Agentation } from "agentation";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { AppHeader } from "../components/AppHeader";
+import { Logo } from "../components/Logo";
 
 
 function NotFoundComponent() {
@@ -106,7 +107,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;450;500;600;700&family=JetBrains+Mono:wght@400&display=swap",
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
+      { rel: "icon", href: "/favicon.ico", sizes: "any" },
+      { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
     ],
   }),
 
@@ -156,7 +159,10 @@ function RootComponent() {
             </Link>
           </nav>
           <div className="flex flex-col gap-1">
-            <span className="font-display font-bold text-foreground">Arivom</span>
+            <span className="flex items-center gap-2 font-display font-bold text-foreground">
+              <Logo className="h-6 w-6" />
+              Arivom
+            </span>
             <span>Connecting People with Their Rights · Not an official government website.</span>
           </div>
         </div>
